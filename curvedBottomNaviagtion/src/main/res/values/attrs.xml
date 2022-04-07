@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CurvedBottomNavigationView">
+        <attr name="cbn_iconColor" format="color" />
+        <attr name="cbn_titleColor" format="color" />
+        <attr name="cbn_titleTextSize" format="integer" />
+        <attr name="cbn_selectedIconColor" format="color" />
+        <attr name="cbn_background" format="color" />
+        <attr name="cbn_curve_radius" format="dimension" />
+        <attr name="cbn_height" format="dimension" />
+        <attr name="cbn_icon_size" format="dimension" />
+        <attr name="cbn_selected_icon_size" format="dimension" />
+        <attr name="cbn_fabColor" format="color" />
+        <attr name="cbn_badgeTextColor" format="color" />
+        <attr name="cbn_badgeBackgroundColor" format="color" />
+        <attr name="cbn_titleFont" format="reference" />
+        <attr name="cbn_badgeFont" format="reference" />
+        <attr name="cbn_rippleColor" format="color" />
+        <attr name="cbn_shadowColor" format="color" />
+        <attr name="cbn_hasAnimation" format="boolean" />
+<!--        <attr name="bottomNavigationType"/>-->
+
+    </declare-styleable>
+
+<!--    <attr name="bottomNavigationType">-->
+<!--        <enum name="labeled" value="1" />-->
+<!--        <enum name="iconed" value="2" />-->
+<!--    </attr>-->
+
+</resources>

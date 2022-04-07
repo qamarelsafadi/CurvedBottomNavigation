@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CurvedBottomNavigation</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
+    <string name="sections">Sections</string>
+    <string name="cart">Cart</string>
+    <string name="more">More</string>
+</resources>
