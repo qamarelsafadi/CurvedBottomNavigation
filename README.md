@@ -11,7 +11,7 @@ Update your module level `build.gradle` file and add the following dependency. P
 
 ```
 dependencies {
-	        implementation 'com.github.qamarelsafadi:CurvedBottomNavigation:0.1.0'
+ implementation 'com.github.qamarelsafadi:CurvedBottomNavigation:0.1.0'
 }
 ```
 
