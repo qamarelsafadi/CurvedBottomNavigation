@@ -7,12 +7,10 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.RippleDrawable
-import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
@@ -23,7 +21,7 @@ import com.qamar.curvedbottomnaviagtion.enum.NavigationType
 
 
 @Suppress("unused")
-class BottomNaviagtionItem @JvmOverloads constructor(
+class BottomNavigationItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttrs: Int = 0
@@ -33,7 +31,7 @@ class BottomNaviagtionItem @JvmOverloads constructor(
         const val EMPTY_VALUE = "empty"
     }
 
-    var isTextVisible = 1
+    private var isTextVisible = 1
     private val binding = DataBindingUtil.inflate<BottomNavigationItemBinding>(
         LayoutInflater.from(context),
         R.layout.bottom_navigation_item,
@@ -86,7 +84,7 @@ class BottomNaviagtionItem @JvmOverloads constructor(
                 binding.titleTxt.setTextColor(value)
         }
 
-    var navigationType = NavigationType.LABELED
+    private var navigationType = NavigationType.LABELED
         set(value) {
             field = value
             if (allowDraw) {
@@ -176,7 +174,7 @@ class BottomNaviagtionItem @JvmOverloads constructor(
                 binding.badgeTxt.typeface = field
         }
 
-    var titleFont: Typeface? = null
+    private var titleFont: Typeface? = null
         set(value) {
             field = value
             if (allowDraw && field != null)
@@ -228,7 +226,7 @@ class BottomNaviagtionItem @JvmOverloads constructor(
             if (isTextVisible == 1) binding.titleTxt.gone()
             d.setColor(circleColor)
             d.shape = GradientDrawable.OVAL
-            if (Build.VERSION.SDK_INT >= 21 && !isItemSelected) {
+            if (!isItemSelected) {
                 binding.fl.background = RippleDrawable(ColorStateList.valueOf(rippleColor), null, d)
             } else {
                 {
@@ -295,7 +293,7 @@ class BottomNaviagtionItem @JvmOverloads constructor(
         layoutParams.height = selectedIconSize.toInt()
         layoutParams.width = selectedIconSize.toInt()
         binding.titleTxt.gone()
-        Log.e("qmrTYPE", "${navigationType}")
+        Log.e("qmrTYPE", "$navigationType")
 
     }
 
@@ -308,7 +306,7 @@ class BottomNaviagtionItem @JvmOverloads constructor(
             interpolator = FastOutSlowInInterpolator()
             addUpdateListener {
                 val f = it.animatedFraction
-                Log.e("qmrFraction", "${f}")
+                Log.e("qmrFraction", "$f")
                 progress = if (enableCell)
                     f
                 else
