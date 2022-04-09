@@ -32,7 +32,7 @@ buildscript {
 
 Add `com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation` in your layout xml file.
 
-```
+```XML
     <com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
