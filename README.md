@@ -72,7 +72,7 @@ Add `com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation` in your layout xml
 # Setup on code 
 
 In your Activiy defined the `ids` of your items 
-``` 
+```Kotlin 
     companion object {
         // you can put any unique id here, but because I am using Navigation Component I prefer to put it as
         // the fragment id.
@@ -85,14 +85,14 @@ In your Activiy defined the `ids` of your items
     }
   ```
 In `onCreate` 
-``` 
+```Kotlin 
   initNavHost()
   setUpBottomNavigation()
   ```
             
 
 Let's setup our Navigation Component // this step is optional but I prefer it
-```
+```Kotlin
   private fun initNavHost() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -101,7 +101,7 @@ Let's setup our Navigation Component // this step is optional but I prefer it
 
 Now let's create our `CurvedNavigationBottomItems` 
 
-``` 
+```Kotlin 
    private fun ActivityMainBinding.setUpBottomNavigation() {
         val bottomNavigationItems = mutableListOf(
             CurvedBottomNavigation.Model(HOME_ITEM, getString(R.string.home), R.drawable._01_home),
@@ -123,7 +123,7 @@ Now let's create our `CurvedNavigationBottomItems`
 ````
    
 And 
-```
+```Kotlin
   // if you need your backstack of your items always back to home please override this method
     override fun onBackPressed() {
         if (navController.currentDestination!!.id == HOME_ITEM)
