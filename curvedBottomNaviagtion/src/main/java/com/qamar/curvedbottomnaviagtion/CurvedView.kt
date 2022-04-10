@@ -131,8 +131,6 @@ class CurvedView @JvmOverloads constructor(
         height = MeasureSpec.getSize(heightMeasureSpec).toFloat()
         curveOuterWidth = curveWidth.dp(context)
         curveOuterHeight = curveHeight.dp(context)
-        Log.e("qmrCANVAS", "${curveOuterWidth.dp(context) * 0.23}")
-        Log.e("qmrCANVAS", "${curveOuterHeight.dp(context) * 0.133}")
         curveInnerWidth = (curveOuterWidth.dp(context) * 0.23).toFloat().dp(context)
         curveInnerHeight = curveOuterHeight.dp(context) * 0.133.toFloat().dp(context)
 

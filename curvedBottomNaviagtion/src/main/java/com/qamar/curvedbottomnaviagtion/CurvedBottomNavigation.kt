@@ -1,5 +1,6 @@
 @file:Suppress("unused")
 
+
 package com.qamar.curvedbottomnaviagtion
 
 import android.animation.ValueAnimator
@@ -228,9 +229,8 @@ class CurvedBottomNavigation : FrameLayout {
     private fun initializeViews() {
         ll_cells = LinearLayout(context)
         ll_cells.apply {
-            val params =
-                LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, heightBottomNaviagtion)
-            params.gravity = Gravity.BOTTOM
+            val params = LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, heightBottomNaviagtion)
+            params.gravity =Gravity.CENTER
             layoutParams = params
             orientation = LinearLayout.HORIZONTAL
             clipChildren = false
