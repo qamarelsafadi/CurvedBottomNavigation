@@ -116,6 +116,7 @@ Now let's create our `CurvedNavigationBottomItems`
             setOnClickMenuListener {
                 navController.navigate(it.id)
             }
+            show(HOME_ITEM)
             // optional
             setupNavController(navController)
         }
