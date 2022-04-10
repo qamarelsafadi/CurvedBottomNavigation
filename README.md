@@ -9,16 +9,16 @@ A simple android library which helps you to create a curved bottom navigation
 
 Update your module level `build.gradle` file and add the following dependency. Please check the project releases for latest versions.
 
-```
+```groovy
 dependencies {
- implementation 'com.github.qamarelsafadi:CurvedBottomNavigation:0.1.2'
+ implementation 'com.github.qamarelsafadi:CurvedBottomNavigation:0.1.3'
 }
 ```
 
 **Important!** if your android studio version is fox and higher please add the following dependency in your project level `build.gradle`
 above `plugins` 
 
-```
+```groovy
 buildscript {
     repositories {
         google()
