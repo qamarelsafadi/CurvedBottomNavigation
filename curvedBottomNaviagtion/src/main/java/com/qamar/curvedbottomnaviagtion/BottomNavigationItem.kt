@@ -11,6 +11,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
@@ -208,7 +210,6 @@ class BottomNavigationItem @JvmOverloads constructor(
             d.shape = GradientDrawable.OVAL
 
             ViewCompat.setBackground(binding.fabView, d)
-
             ViewCompat.setElevation(
                 binding.fabView, if (progress > 0.7f) (progress * 4f).dp(context) else 0f
             )
@@ -239,7 +240,7 @@ class BottomNavigationItem @JvmOverloads constructor(
     var onClickListener: () -> Unit = {}
         set(value) {
             field = value
-            binding.iconIv.setOnClickListener {
+            binding.fl.setOnClickListener {
                 onClickListener()
             }
         }
@@ -282,19 +283,22 @@ class BottomNavigationItem @JvmOverloads constructor(
             animateProgress(false, isAnimate)
         isItemSelected = false
         binding.titleTxt.visible()
-
+        binding.iconIv.setMargins(0,2,0,0)
     }
 
     fun selectedItem(isAnimate: Boolean = true) {
         if (!isItemSelected)
             animateProgress(true, isAnimate)
         isItemSelected = true
-        val layoutParams = binding.fabView.layoutParams
+        binding.titleTxt.gone()
+        val layoutParams = binding.fabView.layoutParams as FrameLayout.LayoutParams
         layoutParams.height = selectedIconSize.toInt()
         layoutParams.width = selectedIconSize.toInt()
-        binding.titleTxt.gone()
-        Log.e("qmrTYPE", "$navigationType")
-
+        binding.fabView.layoutParams = layoutParams
+        val iconTvParams = binding.iconIv.layoutParams as LinearLayout.LayoutParams
+        iconTvParams.gravity = Gravity.CENTER
+        binding.iconIv.layoutParams = iconTvParams
+        binding.iconIv.setMargins(0,12,0,0)
     }
 
     private fun animateProgress(enableCell: Boolean, isAnimate: Boolean = true) {

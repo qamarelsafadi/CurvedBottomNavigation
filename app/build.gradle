@@ -45,7 +45,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     implementation "androidx.fragment:fragment:1.5.0-alpha04"
     implementation "androidx.fragment:fragment-ktx:1.5.0-alpha04"
-//    implementation 'com.github.qamarelsafadi:CurvedBottomNavigation:0.1'
+   // implementation 'com.github.qamarelsafadi:CurvedBottomNavigation:0.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(path: ':curvedBottomNaviagtion')
     testImplementation 'junit:junit:4.13.2'
