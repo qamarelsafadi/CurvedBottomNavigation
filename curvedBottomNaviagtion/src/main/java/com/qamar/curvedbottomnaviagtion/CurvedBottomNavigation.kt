@@ -15,6 +15,7 @@ import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.core.content.res.ResourcesCompat
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.NavController
 import com.qamar.curvedbottomnaviagtion.enum.NavigationType
@@ -208,13 +209,18 @@ class CurvedBottomNavigation : FrameLayout {
                     getColor(R.styleable.CurvedBottomNavigationView_cbn_rippleColor, rippleColor)
                 shadowColor =
                     getColor(R.styleable.CurvedBottomNavigationView_cbn_shadowColor, shadowColor)
-                val typeface = getFont(R.styleable.CurvedBottomNavigationView_cbn_badgeFont)
-                if (typeface != null)
-                    badgeFontType = typeface
-                val typefaceTitle = getFont(R.styleable.CurvedBottomNavigationView_cbn_badgeFont)
-                if (typefaceTitle != null)
-                    titleFontType = typefaceTitle
 
+                if (hasValue(R.styleable.CurvedBottomNavigationView_cbn_badgeFont)) {
+                    val fontId = getResourceId(R.styleable.CurvedBottomNavigationView_cbn_badgeFont, -1)
+                    val typeface = ResourcesCompat.getFont(context, fontId)
+                    badgeFontType = typeface
+                }
+                if (hasValue(R.styleable.CurvedBottomNavigationView_cbn_titleFont)) {
+                    val fontId = getResourceId(R.styleable.CurvedBottomNavigationView_cbn_titleFont, -1)
+                    val typeface = ResourcesCompat.getFont(context, fontId)
+                    if (typeface != null)
+                        titleFontType = typeface
+                }
                 hasAnimation =
                     getBoolean(
                         R.styleable.CurvedBottomNavigationView_cbn_hasAnimation,
@@ -323,6 +329,7 @@ class CurvedBottomNavigation : FrameLayout {
             it.badgeTextColor = badgeTextColor
             it.badgeBackgroundColor = badgeBackgroundColor
             it.badgeFont = badgeFontType
+            it.titleFont = titleFontType
             it.iconSize = iconSize
             it.selectedIconSize = selectedIconSize
         }

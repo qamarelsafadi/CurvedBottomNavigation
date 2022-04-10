@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -84,5 +85,13 @@ fun View.setMargins(
         rightMarginDp?.run { params.rightMargin = this.dpToPx(context) }
         bottomMarginDp?.run { params.bottomMargin = this.dpToPx(context) }
         requestLayout()
+    }
+}
+fun Any.log(tag: String = "") {
+    if (tag.equals("")) {
+        Log.d("TAG_QMR", this.toString())
+    } else {
+        Log.d("TAG_QMR $tag", this.toString())
+
     }
 }

@@ -173,14 +173,14 @@ class BottomNavigationItem @JvmOverloads constructor(
         set(value) {
             field = value
             if (allowDraw && field != null)
-                binding.badgeTxt.typeface = field
+                binding.badgeTxt.typeface = value
         }
 
-    private var titleFont: Typeface? = null
+     var titleFont: Typeface? = null
         set(value) {
             field = value
             if (allowDraw && field != null)
-                binding.titleTxt.typeface = field
+                binding.titleTxt.typeface = value
         }
 
     var rippleColor = 0
@@ -223,17 +223,14 @@ class BottomNavigationItem @JvmOverloads constructor(
     var isItemSelected = false
         set(value) {
             field = value
-            val d = GradientDrawable()
             if (isTextVisible == 1) binding.titleTxt.gone()
+            val d = GradientDrawable()
             d.setColor(circleColor)
             d.shape = GradientDrawable.OVAL
-            if (!isItemSelected) {
-                binding.fl.background = RippleDrawable(ColorStateList.valueOf(rippleColor), null, d)
-            } else {
+            if (isItemSelected) {
                 {
                     binding.fl.setBackgroundColor(Color.TRANSPARENT)
                 }.withDelay(200)
-
             }
         }
 
@@ -283,12 +280,13 @@ class BottomNavigationItem @JvmOverloads constructor(
             animateProgress(false, isAnimate)
         isItemSelected = false
         binding.titleTxt.visible()
-        binding.iconIv.setMargins(0,2,0,0)
+        binding.iconIv.setMargins(0, 2, 0, 0)
     }
 
     fun selectedItem(isAnimate: Boolean = true) {
-        if (!isItemSelected)
+        if (!isItemSelected){
             animateProgress(true, isAnimate)
+        }
         isItemSelected = true
         binding.titleTxt.gone()
         val layoutParams = binding.fabView.layoutParams as FrameLayout.LayoutParams
@@ -298,7 +296,7 @@ class BottomNavigationItem @JvmOverloads constructor(
         val iconTvParams = binding.iconIv.layoutParams as LinearLayout.LayoutParams
         iconTvParams.gravity = Gravity.CENTER
         binding.iconIv.layoutParams = iconTvParams
-        binding.iconIv.setMargins(0,12,0,0)
+        binding.iconIv.setMargins(0, 12, 0, 0)
     }
 
     private fun animateProgress(enableCell: Boolean, isAnimate: Boolean = true) {
