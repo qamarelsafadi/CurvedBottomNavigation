@@ -25,7 +25,7 @@ internal typealias IBottomNavigationListener = (model: CurvedBottomNavigation.Mo
 class CurvedBottomNavigation : FrameLayout {
 
     var models = ArrayList<Model>()
-    var cells = ArrayList<BottomNaviagtionItem>()
+    var cells = ArrayList<BottomNavigationItem>()
         private set
     private var callListenerWhenIsSelected = false
 
@@ -132,11 +132,13 @@ class CurvedBottomNavigation : FrameLayout {
         initializeViews()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         setAttributeFromXml(context, attrs)
         initializeViews()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         context,
         attrs,
@@ -270,7 +272,7 @@ class CurvedBottomNavigation : FrameLayout {
     }
 
     fun add(model: Model) {
-        val cell = BottomNaviagtionItem(context)
+        val cell = BottomNavigationItem(context)
         cell.apply {
             val params = LinearLayout.LayoutParams(0, heightBottomNaviagtion, 1f)
             layoutParams = params
@@ -331,7 +333,7 @@ class CurvedBottomNavigation : FrameLayout {
         curvedView.layoutParams = layoutParams
     }
 
-    private fun anim(cell: BottomNaviagtionItem, id: Int, enableAnimation: Boolean = true) {
+    private fun anim(cell: BottomNavigationItem, id: Int, enableAnimation: Boolean = true) {
         isAnimating = true
 
         val pos = getModelPosition(id)
@@ -400,7 +402,7 @@ class CurvedBottomNavigation : FrameLayout {
     fun setupNavController(navController: NavController) {
         this.navController = navController
         show(navController.currentDestination?.id!!)
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             show(destination.id, true)
         }
     }
@@ -418,7 +420,7 @@ class CurvedBottomNavigation : FrameLayout {
         return null
     }
 
-    fun getCellById(id: Int): BottomNaviagtionItem? {
+    fun getCellById(id: Int): BottomNavigationItem? {
         return cells[getModelPosition(id)]
     }
 
@@ -441,8 +443,8 @@ class CurvedBottomNavigation : FrameLayout {
     fun clearCount(id: Int) {
         val model = getModelById(id) ?: return
         val pos = getModelPosition(id)
-        model.count = BottomNaviagtionItem.EMPTY_VALUE
-        cells[pos].badge = BottomNaviagtionItem.EMPTY_VALUE
+        model.count = BottomNavigationItem.EMPTY_VALUE
+        cells[pos].badge = BottomNavigationItem.EMPTY_VALUE
     }
 
     fun clearAllCounts() {
@@ -465,7 +467,7 @@ class CurvedBottomNavigation : FrameLayout {
 
     class Model(var id: Int, var title: String, var icon: Int) {
 
-        var count: String = BottomNaviagtionItem.EMPTY_VALUE
+        var count: String = BottomNavigationItem.EMPTY_VALUE
 
     }
 }
