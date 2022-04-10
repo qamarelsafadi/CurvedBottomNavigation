@@ -30,7 +30,7 @@
         app:cbn_selected_icon_size="48dp"
         app:cbn_selectedIconColor="@color/white"
         app:cbn_titleColor="@color/white"
-        app:cbn_titleFont="@font/book"
+        app:cbn_titleFont="@font/bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
